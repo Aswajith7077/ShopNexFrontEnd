@@ -25,8 +25,8 @@ const tagNames = [
 const getItems = (setItems) => {
   api.get('/getitems')
     .then(response => {
-      setItems(response.data);
-      console.log("Items : ", response.data);
+      setItems(response.data[0]);
+      console.log("Items : ", response.data[0]);
       console.log('Items Retrived!');
     })
     .catch(error => {
@@ -75,6 +75,7 @@ const DashBoard = () => {
 
   useEffect(()=>{
     getItems(setItems);
+    console.log(items);
     
   },[]);
 
@@ -111,7 +112,7 @@ const DashBoard = () => {
 
       <Options />
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-even ">
-        {items && items[0].map((value,key) => {
+        {items && items.map((value,key) => {
           console.log(value);
           return <ProductCard product={value} key={key}/>
         })}
