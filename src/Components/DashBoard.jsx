@@ -1,11 +1,12 @@
 import React from "react";
 import Banner from "./Banner";
 import NavBar from "./NavBar";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import Options from "./Options";
 import Footer from "./Footer";
+import { api } from "../api/api";
 
 const tagNames = [
   "Electronics",
@@ -14,6 +15,23 @@ const tagNames = [
   "Appliances",
   "Utensils"
 ];
+
+// const getUser = () => {
+  
+//   api.get("/");
+// }
+
+
+const getItems = (setItems) => {
+  api.get('/getitems')
+    .then(response => {
+      setItems(response.data);
+      console.log('Items Retrived!');
+    })
+    .catch(error => {
+      console.log('Error in Items Retrival : ',error);
+    })
+}
 
 
 const ShoppingTags = () => {
@@ -52,6 +70,13 @@ const ShoppingTags = () => {
 };
 
 const DashBoard = () => {
+  const [items,setItems] = useState([]);
+
+  useEffect(()=>{
+    getItems(setItems);
+  },[]);
+
+
   return (
     <div className="bg-gradient-to-b from-[#f4fcf6] to-[#f4fcf6] pt-[5%] px-[5%]">
       <Banner className="px[2%] " />

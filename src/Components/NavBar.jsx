@@ -6,11 +6,25 @@ import { color, motion } from "framer-motion";
 import { useRef } from "react";
 import { logo } from "../assets";
 import { Circle as CircleProgress } from "rc-progress";
+import { Link, useNavigate } from "react-router-dom";
 
 import { HiShoppingBag } from "react-icons/hi2";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaUserCircle } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
+import { useAuth } from "../auth/AuthContext";
+
+
+const handleCartClick = (navigate,auth) => {
+
+  if(auth.user === undefined){
+    alert('Login to View Cart');
+    return
+  }
+
+  navigate('/cart');
+
+}
 
 const navLinks = [
   {
@@ -25,12 +39,14 @@ const navLinks = [
   },
   {
     title: "My Purchases",
-    icon: <HiShoppingBag size={24}/>,
+    icon: <HiShoppingBag size={24} />,
     link: ""
   }
 ];
 
 const NavBar = ({ searchBar = true, className = "" }) => {
+  const auth = useAuth();
+  const navigate = useNavigate();
   const reference = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -65,24 +81,46 @@ const NavBar = ({ searchBar = true, className = "" }) => {
       )}
 
       <div className="flex flex-row justify-evenly">
+        {/* <Link to={`/cart`}> */}
         <motion.button
           className="mx-10 "
+          onClick={() => handleCartClick(navigate, auth)}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
         >
           <FaCartShopping size={28} className=" cursor-pointer w-fit" />
         </motion.button>
-        <motion.button
-          className=" mx-10 "
-          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
-          whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-        >
-          <FaUserCircle
-            size={36}
-            className=" cursor-pointer w-fit"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          />
-        </motion.button>
+        {/* </Link> */}
+
+        {auth.user !== undefined && (
+          <motion.button
+            className=" mx-10 "
+            whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+          >
+            <FaUserCircle
+              size={36}
+              className=" cursor-pointer w-fit"
+              onClick={() => setMenuOpen((prev) => !prev)}
+            />
+          </motion.button>
+        )}
+
+        {auth.user === undefined && (
+          <div className="flex flex-row">
+            <motion.button
+              onClick={() => {
+                navigate("/login");
+              }}
+              className=" mx-10 border-2 border-[#29ffd8] font-[lato] font-semibold bg-[#29ffd8] px-5 py-3 rounded-xl"
+              whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            >
+              Register
+            </motion.button>
+          </div>
+        )}
+
         {menuOpen && (
           <div className="absolute flex flex-col bg-[#A3FFF4]  w-[25rem] border rounded-3xl right-10 top-20 px-5">
             <div className="flex flex-row items-center justify-center my-10">
@@ -119,11 +157,16 @@ const NavBar = ({ searchBar = true, className = "" }) => {
             </motion.div>
 
             <ul>
-              {navLinks.map((value,key)=>{
-                return <li key={key} className="flex flex-row py-2 items-center mx-5 gap-5">
-                  {value.icon}
-                  <h1 className="font-[lato] font-semibold">{value.title}</h1>
-                </li>
+              {navLinks.map((value, key) => {
+                return (
+                  <li
+                    key={key}
+                    className="flex flex-row py-2 items-center mx-5 gap-5"
+                  >
+                    {value.icon}
+                    <h1 className="font-[lato] font-semibold">{value.title}</h1>
+                  </li>
+                );
               })}
             </ul>
             <motion.button
