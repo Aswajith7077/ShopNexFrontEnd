@@ -50,6 +50,8 @@ const NavBar = ({ searchBar = true, className = "" }) => {
   const reference = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [search,setSearch] = useState("");
+
   return (
     <nav
       className={`fixed flex items-center justify-between py-5 w-full bg-[#f4fcf6] ${className} z-50`}
@@ -62,6 +64,7 @@ const NavBar = ({ searchBar = true, className = "" }) => {
         >
           <input
             placeholder="Search new products"
+            onChange={(e) => setSearch(e.target.value ? e.target.value : search)}
             className="w-full px-[7%] md:px-[5%] font-[source sans 3] py-3 outline-none rounded-full border-2 focus:border-[#29FFD8]"
           />
           <motion.button
@@ -73,6 +76,13 @@ const NavBar = ({ searchBar = true, className = "" }) => {
             whileTap={{
               scale: 0.9,
               transition: { duration: 0.2 }
+            }}
+            onClick={() => {
+              if(search === ''){
+                alert('Search text is invalid');
+                return;
+              }
+              navigate('/search');
             }}
           >
             <ArrowRight size={20} strokeWidth={2.75} absoluteStrokeWidth />
