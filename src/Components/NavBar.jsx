@@ -82,7 +82,13 @@ const NavBar = ({ searchBar = true, className = "" }) => {
                 alert('Search text is invalid');
                 return;
               }
-              navigate('/search');
+              navigate('/search',
+                {
+                  state:{
+                    searchText : search,
+                  }
+                }
+              );
             }}
           >
             <ArrowRight size={20} strokeWidth={2.75} absoluteStrokeWidth />

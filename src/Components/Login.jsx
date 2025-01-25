@@ -97,6 +97,7 @@ const handleLogin = (navigate, auth, email, password) => {
       password: password
     })
     .then((response) => {
+      console.log(response);
       if (200 <= response.status && response.status <= 299) {
         auth.setUser = {
           email: email,

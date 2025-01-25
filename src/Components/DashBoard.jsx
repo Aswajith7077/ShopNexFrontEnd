@@ -26,6 +26,7 @@ const getItems = (setItems) => {
   api.get('/getitems')
     .then(response => {
       setItems(response.data);
+      console.log("Items : ", response.data);
       console.log('Items Retrived!');
     })
     .catch(error => {
@@ -74,6 +75,7 @@ const DashBoard = () => {
 
   useEffect(()=>{
     getItems(setItems);
+    
   },[]);
 
 

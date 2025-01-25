@@ -24,6 +24,8 @@ const CartCard = ({ product }) => {
         })}
       </div>
 			<h3>{product.rating}</h3>
+
+			
     </div>
   );
 };
