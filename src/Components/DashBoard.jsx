@@ -111,10 +111,9 @@ const DashBoard = () => {
 
       <Options />
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-even ">
-        {items && items[0].map((value,key) => {
-          return <div>
-            <ProductCard product={value}/>
-          </div>
+        {items && items.map((value,key) => {
+          console.log(value);
+          return <ProductCard product={value} key={key}/>
         })}
       </div>
 
