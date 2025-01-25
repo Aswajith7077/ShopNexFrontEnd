@@ -15,27 +15,27 @@ const ProductCard = ({ image, title, oldPrice, newPrice, rating, inStock }) => {
 
   
   return (
-    <Link to='/products'>
-      <motion.div 
-        className="flex flex-col w-[30rem]  bg-gradient-to-r from-[#29FFD877]  rounded-[20px] cursor-pointer shadow-2xl m-5 "
+    <Link to="/products">
+      <motion.div
+        className="flex flex-col w-[100%] p-2  rounded-[20px] cursor-pointer  m-5 "
         whileHover={{
-          scale:1.05,
-          transitionDuration:0.2,
+          scale: 1.05,
+          transitionDuration: 0.2
         }}
-        >
-        <div className="bg-white rounded-t-[20px] p-10 ">
+      >
+        <div className="bg-white rounded-[20px] p-10 shadow-md">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/e-commerce-31af1.appspot.com/o/FleeceBlanket.png?alt=media&token=06fa7532-0b90-4aca-bf43-1cde9d6386df"
             className="w-full h-[10rem]"
           />
         </div>
-        <h1 className="text-xl font-[lato] font-bold mx-4 mt-6 ">
+        <h1 className="text-xl font-[lato] font-bold mx-4 mt-3 ">
           Super Comfort Matress
         </h1>
-        <h1 className="text-sm font-[montserrat] font-semibold uppercase mt-2 mx-4">
+        <h1 className="text-sm font-[montserrat] font-semibold uppercase mt-1 mx-4">
           repose
         </h1>
-        <div className="flex flex-row justify-between mb-5 items-center">
+        <div className="flex flex-row justify-between mb-1 items-center">
           <div className="flex flex-row mx-2 ">
             {l.map((value, key) => {
               return l[key] >= 1 ? (
@@ -47,9 +47,13 @@ const ProductCard = ({ image, title, oldPrice, newPrice, rating, inStock }) => {
               );
             })}
           </div>
-          <div className="flex flex-col justify-center" >
-            <h1 className="font-[manrope] text-3xl mr-4 font-bold text-right">$299.00</h1>
-            <h1 className="font-[manrope] mr-4 font-bold text-right line-through ">$299.00</h1>
+          <div className="flex flex-col ">
+            <h1 className="font-[manrope] text-2xl mr-4 font-bold text-right ">
+              $299.00
+            </h1>
+            <h1 className="font-[manrope] mr-4 font-bold text-right line-through ">
+              $299.00
+            </h1>
           </div>
         </div>
       </motion.div>

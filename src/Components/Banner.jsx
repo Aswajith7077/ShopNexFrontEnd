@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const bannerElements = [
@@ -70,25 +71,25 @@ const Banner = () => {
           className="flex items-center gap-10"
         >
           <div className="flex-1 text-white">
-            <h1 className="text-4xl font-bold mb-5">
+            <h1 className="text-4xl font-[lato] font-bold mb-5">
               {bannerElements[currentIndex].title}
             </h1>
-            <p className="text-sm mb-5">
+            <p className="text-md mb-5 font-[lato] font-medium">
               {bannerElements[currentIndex].description}
             </p>
-            <a
-              href={bannerElements[currentIndex].link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 px-6 py-3 bg-[#29FFD8] text-black border-2 border-gray-700 hover:border-[#29FFD8] rounded-full"
-            >
-              Explore
-            </a>
+            <Link to='/products'>
+              <motion.button
+                target="_blank"
+                className="mt-5 px-10 py-3 font-[lato] bg-[#29FFD8] text-black text-base font-semibold rounded-full"
+              >
+                Explore
+              </motion.button>
+            </Link>
           </div>
           <img
             src={bannerElements[currentIndex].image}
             alt={bannerElements[currentIndex].title}
-            className="w-[30rem] h-auto rounded-lg py-10"
+            className="w-[30rem] px-10 h-auto rounded-lg py-20"
           />
         </motion.div>
       </div>

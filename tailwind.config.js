@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        montserrat:'montserrat',
-        lato:'lato',
-        firacode:'fira code',
-        manrope:'manrope',
+        montserrat:['montserrat'],
+        lato:['lato'],
+        firacode:['fira code'],
+        manrope:['manrope'],
 
       }
     }

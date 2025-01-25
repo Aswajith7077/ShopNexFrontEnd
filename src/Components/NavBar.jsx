@@ -66,7 +66,7 @@ const NavBar = ({ searchBar = true, className = "" }) => {
             onChange={(e) =>
               setSearch(e.target.value ? e.target.value : search)
             }
-            className="w-full px-[7%] md:px-[5%] font-[source sans 3] py-3 outline-none rounded-full border-2 focus:border-[#29FFD8]"
+            className="w-full px-[7%] md:px-[5%] font-[lato] font-semibold py-3 outline-none rounded-full border-2 focus:border-[#29FFD8]"
           />
           <motion.button
             className={`rounded-full bg-[#29FFD8] p-3 m-1`}

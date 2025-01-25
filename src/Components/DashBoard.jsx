@@ -87,7 +87,7 @@ const DashBoard = () => {
         Recommended Products
       </h1>
       <div className="flex flex-row ml-2  ">
-        <ul className="flex flex-row pb-10 overflow-hidden">
+        <ul className="flex flex-row pb-10 overflow-hidden gap-5">
           <li>
             <ProductCard />
           </li>
