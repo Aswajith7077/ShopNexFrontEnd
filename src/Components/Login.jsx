@@ -51,40 +51,37 @@ const ContinueButtons = () => {
   );
 };
 
-
-
-const handleSignIn = (setToggle,email,password,confirm) => {
-  if(password !== confirm){
-    alert('New password and confirm password should match')
+const handleSignIn = (setToggle, email, password, confirm) => {
+  if (password !== confirm) {
+    alert("New password and confirm password should match");
     return;
   }
-  if(email === '' || email === undefined){
-    alert('Email must be provided');
+  if (email === "" || email === undefined) {
+    alert("Email must be provided");
     return;
   }
-  if(password === '' || password === undefined){
-    alert('New Password should be Defined');
+  if (password === "" || password === undefined) {
+    alert("New Password should be Defined");
     return;
   }
-  if(confirm === '' || confirm === undefined){
-    alert('Confirm Password should be Provided');
+  if (confirm === "" || confirm === undefined) {
+    alert("Confirm Password should be Provided");
     return;
   }
 
-  api.post('/createuser',{
-      email:email,
-      password:password
-  }).then(response => {
-    if ( 200 <= response.status && response.status <= 299)
-      setToggle(0);
-  }).catch(err => console.log(err));
-}
+  api
+    .post("/createuser", {
+      email: email,
+      password: password
+    })
+    .then((response) => {
+      if (200 <= response.status && response.status <= 299) setToggle(0);
+    })
+    .catch((err) => console.log(err));
+};
 
-
-
-
-const handleLogin = (navigate,auth,email,password) => {
-  console.log(email,password)
+const handleLogin = (navigate, auth, email, password) => {
+  console.log(email, password);
   if (email === "" || email === undefined) {
     alert("Email must be provided");
     return;
@@ -96,33 +93,27 @@ const handleLogin = (navigate,auth,email,password) => {
 
   api
     .post("/login", {
-        email: email,
-        password: password,
+      email: email,
+      password: password
     })
     .then((response) => {
-      if (200 <= response.status && response.status <= 299){
+      if (200 <= response.status && response.status <= 299) {
         auth.setUser = {
-          email:email,
-          password:password
-        }
-        navigate('/dashboard');
+          email: email,
+          password: password
+        };
+        navigate("/dashboard");
       }
     })
     .catch((err) => console.log(err));
+};
 
-}
-
-
-
-
-const LoginPage = ({ toggle ,setToggle}) => {
+const LoginPage = ({ toggle, setToggle }) => {
   const auth = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const navigate = useNavigate();
-
-
 
   return (
     <>
@@ -150,19 +141,16 @@ const LoginPage = ({ toggle ,setToggle}) => {
         <IoLockClosed size={24} className="mx-5" />
         <input
           type="password"
-          
           onChange={(e) => setConfirm(e.target.value)}
           placeholder={toggle === 0 ? "Password" : "Confirm Password"}
           className="font-[source sans 3] font-semibold text-md py-3 w-full pr-5 bg-transparent outline-none"
         />
       </div>
       <motion.button
-      onClick={() => {
-        if(toggle)
-          handleSignIn(setToggle,email,password,confirm)
-        else
-          handleLogin(navigate,auth,email,confirm)
-      }}
+        onClick={() => {
+          if (toggle) handleSignIn(setToggle, email, password, confirm);
+          else handleLogin(navigate, auth, email, confirm);
+        }}
         whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
         whileTap={{ scale: 0.97, transition: { duration: 0.2 } }}
         className="font-semibold  w-full font-[lato] text-lg mt-10 mb-5 py-3 rounded-2xl bg-[#29ffd8]"
@@ -185,15 +173,13 @@ const LoginPage = ({ toggle ,setToggle}) => {
 const Login = () => {
   const [toggle, setToggle] = useState(0);
 
-  
-
   return (
     <div className="flex bg-[#f4fcf6] w-screen h-screen items-center justify-center">
       <div className="flex flex-row bg-[#C0FFE1] w-full mx-[10%] h-[50rem] my-[10%]">
         <div className="flex items-center flex-col justify-center w-full lg:w-[50%] px-[10%] bg-white">
           <img src={logo} alt="" className="mb-[20%] h-[30px]" />
           <Toggle toggle={toggle} setToggle={setToggle} />
-          <LoginPage toggle={toggle} setToggle={setToggle}/>
+          <LoginPage toggle={toggle} setToggle={setToggle} />
         </div>
         <div className="hidden lg:flex  lg:w-[35%] flex-col items-center h-full justify-center  mx-[10%]">
           <h1 className="font-semibold text-center font-[montserrat] text-5xl">
