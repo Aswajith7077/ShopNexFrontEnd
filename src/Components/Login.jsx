@@ -92,12 +92,12 @@ const handleLogin = (navigate, auth, email, password) => {
   }
 
   api
-    .post("/login", {
+    .put("/login", {
       email: email,
       password: password
     })
     .then((response) => {
-      console.log(response);
+      console.log('Response : ',response);
       if (200 <= response.status && response.status <= 299) {
         auth.setUser = {
           email: email,
