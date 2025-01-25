@@ -7,6 +7,7 @@ import NavBar from './Components/NavBar';
 import Products from './Components/Products';
 import Cart from './Components/Cart';
 import Footer from './Components/Footer';
+import SearchPage from './Components/SearchPage';
 import { AuthProvider } from './auth/AuthContext';
 
 const App = () => {
