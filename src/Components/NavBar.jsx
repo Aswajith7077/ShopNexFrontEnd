@@ -6,7 +6,7 @@ import { color, motion } from "framer-motion";
 import { useRef } from "react";
 import { logo } from "../assets";
 import { Circle as CircleProgress } from "rc-progress";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { HiShoppingBag } from "react-icons/hi2";
 import { FaCartShopping } from "react-icons/fa6";
@@ -14,17 +14,14 @@ import { FaUserCircle } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useAuth } from "../auth/AuthContext";
 
-
-const handleCartClick = (navigate,auth) => {
-
-  if(auth.user === undefined){
-    alert('Login to View Cart');
-    return
+const handleCartClick = (navigate, auth) => {
+  if (auth.user === undefined) {
+    alert("Login to View Cart");
+    return;
   }
 
-  navigate('/cart');
-
-}
+  navigate("/cart");
+};
 
 const navLinks = [
   {
@@ -49,8 +46,9 @@ const NavBar = ({ searchBar = true, className = "" }) => {
   const navigate = useNavigate();
   const reference = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const [search,setSearch] = useState("");
+  const location = useLocation();
+  const [search, setSearch] = useState("");
+  const searchBarRef = useRef(null);
 
   return (
     <nav
@@ -63,8 +61,11 @@ const NavBar = ({ searchBar = true, className = "" }) => {
           className={`flex flex-row w-[60%] md:w-[35%] rounded-full `}
         >
           <input
+            ref={searchBarRef}
             placeholder="Search new products"
-            onChange={(e) => setSearch(e.target.value ? e.target.value : search)}
+            onChange={(e) =>
+              setSearch(e.target.value ? e.target.value : search)
+            }
             className="w-full px-[7%] md:px-[5%] font-[source sans 3] py-3 outline-none rounded-full border-2 focus:border-[#29FFD8]"
           />
           <motion.button
@@ -78,17 +79,16 @@ const NavBar = ({ searchBar = true, className = "" }) => {
               transition: { duration: 0.2 }
             }}
             onClick={() => {
-              if(search === ''){
-                alert('Search text is invalid');
+              if (search === "") {
+                alert("Search text is invalid");
                 return;
               }
-              navigate('/search',
-                {
-                  state:{
-                    searchText : search,
-                  }
+              if (location.pathname === "/search") return;
+              navigate("/search", {
+                state: {
+                  searchText: search
                 }
-              );
+              });
             }}
           >
             <ArrowRight size={20} strokeWidth={2.75} absoluteStrokeWidth />
