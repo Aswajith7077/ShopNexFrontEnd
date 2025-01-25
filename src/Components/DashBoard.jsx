@@ -87,7 +87,7 @@ const DashBoard = () => {
         Recommended Products
       </h1>
       <div className="flex flex-row ml-2  ">
-        <ul className="flex flex-row pb-10 overflow-hidden gap-5">
+        <ul className="flex flex-row pb-10 overflow-hidden gap-1">
           <li>
             <ProductCard />
           </li>
@@ -111,15 +111,11 @@ const DashBoard = () => {
 
       <Options />
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-even ">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {items && items.map((value,key) => {
+          return <div>
+            <ProductCard product={product}/>
+          </div>
+        })}
       </div>
 
       <h1 className="text-4xl font-bold font-[lato] mx-7 my-[3%] mb-10">
