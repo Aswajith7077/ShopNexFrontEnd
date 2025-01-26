@@ -35,7 +35,7 @@ const ProductCard = ({product}) => {
           />
         </div>
         <h1 className="text-lg font-[lato] font-bold mx-4 mt-3 ">
-          {product.title.slice(0,30) + '...'}
+          {product.title.slice(0,40) + '...'}
         </h1>
         <p className="text-sm font-[lato] font-gray-600 font-semibold mt-1 mx-4">
           {product.brand}
