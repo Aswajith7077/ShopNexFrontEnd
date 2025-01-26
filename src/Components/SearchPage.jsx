@@ -20,16 +20,19 @@ const SearchPage = () => {
   const state = useLocation();
   const [items, setItems] = useState([]);
 
-
+  console.log(state.state);
 	useEffect(() => {
 		getSearchItems(items,setItems);
+    console.log(items)
 	},[]);
+
+
 
   return (
     <div>
 			<NavBar />
-      <div className="my-[10%]">
-        <h1>{`Results for ${state.searchText}`}</h1>
+      <div className="py-[10%]">
+        <h1 className="font-[lato] font-semibold text-xl">{`Results for ${state.state.searchText}`}</h1>
         
       </div>
     </div>
