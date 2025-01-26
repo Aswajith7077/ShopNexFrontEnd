@@ -34,11 +34,11 @@ const ProductCard = ({product}) => {
             className="w-full h-[10rem]"
           />
         </div>
-        <h1 className="text-md font-[lato] font-bold mx-4 mt-3 ">
-          {product.title.slice(0,10)}
+        <h1 className="text-lg font-[lato] font-bold mx-4 mt-3 ">
+          {product.title.split(' ').slice(0,2) + '...'}
         </h1>
         <p className="text-sm font-[lato] font-gray-600 font-semibold mt-1 mx-4">
-          {product.description.slice(0,16)}
+          {product.brand}
         </p>
         <div className="flex flex-row justify-between mb-1 items-center">
           <div className="flex flex-row mx-2 ">
