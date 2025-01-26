@@ -54,7 +54,7 @@ const ProductCard = ({product}) => {
           </div>
           <div className="flex flex-col ">
             <h1 className="font-[manrope] text-2xl mr-4 font-bold text-right ">
-              {`${product.PRODUCT_PRICE}`}
+              {`$${product.PRODUCT_PRICE}`}
             </h1>
             <h1 className="font-[manrope] mr-4 font-bold text-right line-through ">
               
