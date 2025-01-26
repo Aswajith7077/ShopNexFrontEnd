@@ -25,6 +25,9 @@ const Cart = () => {
     getCartItems();
   }, []);
 
+  
+
+
   return (
     <div className="flex flex-col">
       <NavBar />
@@ -33,10 +36,6 @@ const Cart = () => {
         <div className="flex flex-col">
           {cartItems?.map((value, key) => {
             console.log(value);
-            // return <div key={key} className="flex flex-row">
-            //   <img src=""></img>
-            //   <h1></h1>
-            // </div>;
           })}
         </div>
       </div>

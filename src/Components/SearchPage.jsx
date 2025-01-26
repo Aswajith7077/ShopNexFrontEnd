@@ -7,7 +7,9 @@ import NavBar from "./NavBar";
 const getSearchItems = (items, setItems) => {
   api.get("/searchitems")
 		.then(response => {
+      console.log(response.data);
 			setItems(response.data);
+      console.log(items)
 		})
 		.catch(err => {
 			console.log('Searching Failed',err)
@@ -18,6 +20,7 @@ const SearchPage = () => {
   const state = useLocation();
   const [items, setItems] = useState([]);
 
+
 	useEffect(() => {
 		getSearchItems(items,setItems);
 	},[]);
@@ -27,6 +30,7 @@ const SearchPage = () => {
 			<NavBar />
       <div>
         <h1>{`Results for ${state.searchText}`}</h1>
+        
       </div>
     </div>
   );
