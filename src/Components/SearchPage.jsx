@@ -28,7 +28,7 @@ const SearchPage = () => {
   return (
     <div>
 			<NavBar />
-      <div>
+      <div className="my-[10%]">
         <h1>{`Results for ${state.searchText}`}</h1>
         
       </div>
