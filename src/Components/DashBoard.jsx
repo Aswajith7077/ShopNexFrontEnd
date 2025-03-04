@@ -16,11 +16,6 @@ const tagNames = [
   "Utensils"
 ];
 
-// const getUser = () => {
-  
-//   api.get("/");
-// }
-
 
 const getItems = (setItems) => {
   api.get('/getitems')
