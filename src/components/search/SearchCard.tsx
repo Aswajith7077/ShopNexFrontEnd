@@ -47,7 +47,7 @@ const SearchCard = ({
           })}
         </div>
         <div className="flex flex-row justify-between mr-10">
-          <Rating score={search_data.RATING} />
+          <Rating score={search_data.RATING} display_number={true} size={26}/>
           <h2 className="font-semibold text-2xl">
             {search_data.FINAL_PRICE + " " + search_data.CURRENCY}
           </h2>

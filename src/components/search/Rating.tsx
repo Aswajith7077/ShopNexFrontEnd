@@ -15,18 +15,18 @@ const renderStars = (value: number): IconType[] => {
   return result;
 };
 
-const Rating = ({ score }: { score: number }) => {
+const Rating = ({ score,display_number  = false,size = 26}: { score: number ,display_number:boolean,size:number}) => {
   const stars: IconType[] = renderStars(score);
   return (
     <div className="flex flex-row items-center gap-5">
       <div className="flex flex-row gap-2">
         {stars.map((StarComponent, key) => {
-          return <StarComponent key={key} size={26} />;
+          return <StarComponent key={key} size={size} />;
         })}
       </div>
-      <h1 className="font-semibold text-lg">
+      {display_number && <h1 className="font-semibold text-lg">
         {score}
-      </h1>
+      </h1>}
     </div>
   );
 };

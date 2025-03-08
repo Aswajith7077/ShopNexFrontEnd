@@ -10,7 +10,7 @@ type VariationType = {
 type ProductViewResponseType = {
   "NAME": string,
   "BRAND": string,
-  "DESC": string,
+  "DESC": string[],
   "INITIAL_PRICE": number,
   "FINAL_PRICE": number,
   "CURRENCY": string,
@@ -29,5 +29,6 @@ type ProductViewResponseType = {
 
 
 export type{
+  VariationType,
     ProductViewResponseType
 }
