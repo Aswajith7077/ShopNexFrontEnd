@@ -15,6 +15,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
 
 export function SidebarMain({
   categories,
@@ -48,9 +49,9 @@ export function SidebarMain({
                   {categories.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title} className="">
                       <SidebarMenuSubButton asChild>
-                        <a href={subItem.url} className="py-5">
+                        <Button className="py-5 w-full justify-start cursor-pointer" variant='ghost'>
                           <span>{subItem.title}</span>
-                        </a>
+                        </Button>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}

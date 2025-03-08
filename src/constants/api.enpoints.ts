@@ -7,8 +7,8 @@ const BASE_URL = 'http://localhost:9000/api/'
 const enum API_ENDPOINTS {
     LOGIN_ENDPOINT = `users/login`,
     SIGNIN_ENDPOINT = `users/signin`,
-    GET_PRODUCTS_ENDPOINT = `products/list_products`
-
+    GET_PRODUCTS_ENDPOINT = `products/list_products`,
+    SEARCH_PRODUCTS_ENDPOINT = `products/search`
 }
 
 

@@ -24,6 +24,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { IconType } from "react-icons/lib"
+import { Button } from "../ui/button"
+import { useCallback, useMemo } from "react"
+import { useNavigate } from "react-router-dom"
 
 export function SidebarUtilities({
   utilities,
@@ -36,7 +39,9 @@ export function SidebarUtilities({
   }[],
   title:string
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
+  const navigate = useNavigate();
+  const handleNavigate = useCallback((path:string) => navigate(path),[navigate]);
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -45,10 +50,10 @@ export function SidebarUtilities({
         {utilities.map((item) => (
           <SidebarMenuItem key={item.title} className="flex justify-center">
             <SidebarMenuButton asChild>
-              <a href={item.url} className="py-5">
+              <Button variant={'ghost'} className="justify-start cursor-pointer py-5" onClick={() => handleNavigate(item.url)}>
                 <item.icon />
                 <span>{item.title}</span>
-              </a>
+              </Button>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

@@ -12,7 +12,7 @@ const sidebar_data: SidebarDataType = {
   },
   sidebar_dashboard: {
     title: "Dashboard",
-    url: "",
+    url: "dashboard",
     icon: MdSpaceDashboard
   },
   sidebar_category: {
@@ -47,22 +47,22 @@ const sidebar_data: SidebarDataType = {
   sidebar_utilities: [
     {
       title: "Cart",
-      url: "",
+      url: "cart",
       icon: HiShoppingCart
     },
     {
       title: "Shipping",
-      url: "",
+      url: "shipping",
       icon: RiShip2Fill
     },
     {
       title: "Payment History",
-      url: "",
+      url: "payment_history",
       icon: MdPayments
     },
     {
       title: "Nex Store",
-      url: "",
+      url: "nex_store",
       icon: SiSinglestore
     }
   ]
