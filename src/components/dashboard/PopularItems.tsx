@@ -1,15 +1,26 @@
 import { API_ENDPOINTS } from "@/constants/api.enpoints";
 import { useApiQuery } from "@/hooks/useApiService";
 import { ListProductsResponseType } from "@/types/api/dashboard.type";
-import { useEffect } from "react";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { useHomeContext } from "@/context/home.context";
+import { useNavigate } from "react-router-dom";
 
 type ProductCardPropType = {
   content: ListProductsResponseType;
 };
 
 const ProductCard = ({ content }: ProductCardPropType) => {
-  return <motion.div whileHover={{scale:1.02,transition:{duration:0.2}}} className="flex flex-col rounded-2xl border   justify-between">
+  const navigate = useNavigate();
+  const context_handler = useHomeContext();
+  return (
+    <motion.div
+      onClick={() => {
+        context_handler.setContext({ product_name: content.NAME });
+        navigate("/home/products_view");
+      }}
+      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+      className="flex flex-col rounded-2xl border   justify-between"
+    >
       <div className="w-full rounded-t-2xl p-10 bg-white">
         <img src={content.IMAGES} alt={content.BRAND} className="w-50 h-50" />
       </div>
@@ -27,7 +38,8 @@ const ProductCard = ({ content }: ProductCardPropType) => {
           {content.FINAL_PRICE + " " + content.CURRENCY}
         </h2>
       </div>
-    </motion.div>;
+    </motion.div>
+  );
 };
 
 const PopularItems = () => {
@@ -35,12 +47,6 @@ const PopularItems = () => {
     ListProductsResponseType[]
   >(API_ENDPOINTS.GET_PRODUCTS_ENDPOINT, { limit: 10 });
 
-  useEffect(
-    () => {
-      console.log(data);
-    },
-    [data]
-  );
   return (
     <div>
       <h1 className="font-semibold text-3xl py-10">Popular Items</h1>

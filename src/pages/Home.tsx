@@ -1,7 +1,5 @@
 import AppSidebar from "@/components/AppSidebar";
 import Navbar from "@/components/Navbar";
-import { ScrollArea } from "@/components/ui/scroll-area";
-
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { HomeContext } from "@/context/home.context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

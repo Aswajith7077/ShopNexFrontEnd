@@ -6,6 +6,7 @@ import Search from "@/components/search/Search";
 import Shipping from "@/components/Shipping";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
+import ProductsView from "@/pages/ProductsView";
 import SignIn from "@/pages/SignIn";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path:"search",
         element:<Search/>
+      },
+      {
+        path:"products_view",
+        element:<ProductsView />
       }
     ]
   }

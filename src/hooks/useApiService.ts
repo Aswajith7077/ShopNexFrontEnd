@@ -79,6 +79,8 @@ const useApiQuery = <TResponse>(
   params?: Record<string, unknown>,
   requiresAuth: boolean = false
 ): UseQueryResult<TResponse, AxiosError> => {
+
+
   return useQuery({
     queryKey: [endpoint, params],
     queryFn: () =>

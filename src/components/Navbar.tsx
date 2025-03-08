@@ -9,13 +9,12 @@ import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { useHomeContext } from "@/context/home.context";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 
   const navigate = useNavigate();
-  const handleNavigate = useCallback((path:string) => navigate(path),[navigate]);
 
 
   const [text, setText] = useState<string>("");
@@ -41,7 +40,7 @@ const Navbar = () => {
         onKeyDown={(e) => {
           if(e.key === 'Enter'){
             context_handler.setContext({search_text:text});
-            handleNavigate("search");
+            navigate("search");
           }
         }}
       />

@@ -1,6 +1,6 @@
 import Banner from "@/components/dashboard/Banner";
 import FeaturedCategories from "@/components/dashboard/FeaturedCategories";
-import AdCards from "./dashboard/AdCards";
+import AdCards from "@/components/dashboard/AdCards";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import PopularItems from "@/components/dashboard/PopularItems";
 

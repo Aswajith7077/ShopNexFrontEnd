@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 
 const FormComponent = () => {
   return <div className="flex h-screen flex-col justify-between w-full lg:w-1/2 border bg-slate-300 dark:bg-slate-950 py-20">

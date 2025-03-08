@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { featured_categories } from "@/data/api/dashboard.data";
-import { Card, CardHeader } from "../ui/card";
-import { CategoryButtonsPropType, FeaturedCategoryType } from "@/types/api/dashboard.type";
+import { Card, CardHeader } from "@/components/ui/card";
+import { CategoryButtonsPropType } from "@/types/api/dashboard.type";
 
 const CategoryButtons = ({ state, setState }: CategoryButtonsPropType) => {
   return (
