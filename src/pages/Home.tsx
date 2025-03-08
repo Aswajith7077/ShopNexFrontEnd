@@ -1,5 +1,6 @@
 import AppSidebar from "@/components/AppSidebar";
 import Navbar from "@/components/Navbar";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import {
   SidebarProvider,
@@ -12,7 +13,9 @@ const Home = () => {
         <AppSidebar />
         <div className="flex w-full flex-col">
           <Navbar />
-          <Outlet />
+          <ScrollArea>
+            <Outlet />
+          </ScrollArea>
         </div>
       </div>
     </SidebarProvider>;

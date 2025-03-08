@@ -1,3 +1,4 @@
+import Dashboard from "@/components/Dashboard";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import SignIn from "@/pages/SignIn";
@@ -16,7 +17,13 @@ const router = createBrowserRouter([
     },
     {
         path:"/home",
-        element:<Home />
+        element:<Home />,
+        children:[
+            {
+                path:"dashboard",
+                element:<Dashboard/>
+            }
+        ]
     }
 ]);
 

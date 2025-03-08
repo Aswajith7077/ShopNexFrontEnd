@@ -6,8 +6,8 @@ import {
   BreadcrumbList,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 const Navbar = () => {
   return <main className="flex flex-row justify-between w-full py-5 px-10 items-center">
@@ -24,6 +24,7 @@ const Navbar = () => {
           </div>
 
         <Input placeholder="Search" className="w-[60%] bg-slate-900"/>
+
         <div className="flex flex-row gap-3 items-center">
             <Switch />
             <Label>Dark Mode</Label>
