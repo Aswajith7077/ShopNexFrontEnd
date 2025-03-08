@@ -11,9 +11,9 @@ const Home = () => {
   return <SidebarProvider>
       <div className="flex flex-row w-screen h-screen">
         <AppSidebar />
-        <div className="flex w-full flex-col">
+        <div className="flex flex-col w-full h-screen">
           <Navbar />
-          <ScrollArea>
+          <ScrollArea className="flex-grow overflow-auto">
             <Outlet />
           </ScrollArea>
         </div>
