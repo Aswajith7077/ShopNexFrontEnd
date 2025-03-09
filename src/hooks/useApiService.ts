@@ -1,5 +1,7 @@
+import { decrypt, encrypt } from "@/algorithm/crypto";
 import { API_ENDPOINTS, BASE_URL, getEndPoint } from "@/constants/api.enpoints";
 import { ELOCAL_STORAGE, REQUEST_METHODS } from "@/constants/api.enum";
+import { LoginResponseType } from "@/types/api/auth.type";
 import {
   useMutation,
   UseMutationResult,
@@ -7,14 +9,36 @@ import {
   UseQueryResult
 } from "@tanstack/react-query";
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import { toast } from "sonner";
 
 const getAuthToken = (): string | null => {
   try {
     const authStorage = localStorage.getItem(ELOCAL_STORAGE.AUTH_STORE) ?? "";
-    const { state } = JSON.parse(authStorage);
-    return state?.authToken ?? null;
+    const { state } = JSON.parse(decrypt(authStorage));
+    return state?.access_token ?? null;
   } catch (e) {
     return null;
+  }
+};
+
+const readCredentials = () => {
+  try {
+    const authStorage = localStorage.getItem(ELOCAL_STORAGE.AUTH_STORE) ?? "";
+    const { state } = JSON.parse(decrypt(authStorage));
+    return state;
+  } catch (e) {
+    return null;
+  }
+};
+
+const writeCredentials = (credentials: LoginResponseType) => {
+  try {
+    const serialized_data = encrypt(JSON.stringify({ state: credentials }));
+    localStorage.setItem(ELOCAL_STORAGE.AUTH_STORE, serialized_data);
+    return true;
+  } catch (e) {
+    toast("Error in Writing text");
+    return false;
   }
 };
 
@@ -79,8 +103,6 @@ const useApiQuery = <TResponse>(
   params?: Record<string, unknown>,
   requiresAuth: boolean = false
 ): UseQueryResult<TResponse, AxiosError> => {
-
-
   return useQuery({
     queryKey: [endpoint, params],
     queryFn: () =>
@@ -104,4 +126,4 @@ const useApiMutation = <TRequest, TResponse>(
   });
 };
 
-export { useApiMutation, useApiQuery };
+export { useApiMutation, useApiQuery, writeCredentials, readCredentials };

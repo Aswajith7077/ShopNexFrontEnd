@@ -14,6 +14,8 @@ type LoginRequestType = {
 }
 
 type LoginResponseType = {
+    fullname:string,
+    username:string,
     accessToken:string,
     refreshToken:string,
 }

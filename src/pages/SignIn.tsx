@@ -17,7 +17,7 @@ import {z} from 'zod';
 const FormComponent = () => {
 
   const navigate = useNavigate();
-  const {mutate} = useApiMutation(API_ENDPOINTS.SIGNIN_ENDPOINT,REQUEST_METHODS.POST);
+  const {mutate,isLoading} = useApiMutation(API_ENDPOINTS.SIGNIN_ENDPOINT,REQUEST_METHODS.POST);
   const form = useForm<z.infer<typeof SigninFormSchema>>({
     resolver:zodResolver(SigninFormSchema)
   })
@@ -95,8 +95,8 @@ const FormComponent = () => {
                 <FormMessage />
               </FormItem>} />
 
-          <Button variant={"default"} className="rounded-lg text-base mt-3 cursor-pointer py-6 w-full">
-            Sign in
+          <Button variant={"default"} disabled={isLoading} className="rounded-lg text-base mt-3 cursor-pointer py-6 w-full">
+            {isLoading ? "Signing In...":"Sign in"}
           </Button>
           <div className="flex flex-row items-center px-2 w-full">
             <div className="hidden md:inline border-gray-400 w-1/3 border h-0" />

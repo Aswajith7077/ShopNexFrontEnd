@@ -14,7 +14,7 @@ import {
   FormItem,
   FormMessage
 } from "@/components/ui/form";
-import { useApiMutation } from "@/hooks/useApiService";
+import { useApiMutation, writeCredentials } from "@/hooks/useApiService";
 import { API_ENDPOINTS } from "@/constants/api.enpoints";
 import { REQUEST_METHODS } from "@/constants/api.enum";
 import { LoginRequestType, LoginResponseType } from "@/types/api/auth.type";
@@ -25,7 +25,7 @@ const FormComponent = () => {
     resolver: zodResolver(LoginFormSchema)
   });
 
-  const { mutate } = useApiMutation<LoginRequestType, LoginResponseType>(
+  const { mutate,isLoading } = useApiMutation<LoginRequestType, LoginResponseType>(
     API_ENDPOINTS.LOGIN_ENDPOINT,
     REQUEST_METHODS.POST
   );
@@ -34,7 +34,7 @@ const FormComponent = () => {
     console.log(values);
     mutate(values,{
       onSuccess:(response) => {
-        console.log(response);
+        writeCredentials(response);
       }
     })
   };
@@ -79,8 +79,8 @@ const FormComponent = () => {
               Forgot Password
             </Button>
           </div>
-          <Button variant={"default"} className="rounded-lg text-base cursor-pointer py-6 w-full">
-            Login
+          <Button variant={"default"} disabled={isLoading} className="rounded-lg text-base cursor-pointer py-6 w-full">
+            {isLoading ? "Logging In...":"Login"}
           </Button>
           <div className="flex flex-row items-center px-2 w-full">
             <div className="hidden border-slate-400 md:inline w-1/3 border h-0" />
