@@ -2,8 +2,8 @@
 
 
 type ConfigType = {
-    SECRET_KEY:string,
-    IV:string
+    CRYPTO_KEY:string,
+    CRYPTO_IV:string
 }
 
 

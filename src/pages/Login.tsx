@@ -25,24 +25,32 @@ const FormComponent = () => {
     resolver: zodResolver(LoginFormSchema)
   });
 
-  const { mutate,isLoading } = useApiMutation<LoginRequestType, LoginResponseType>(
-    API_ENDPOINTS.LOGIN_ENDPOINT,
-    REQUEST_METHODS.POST
-  );
+  const { mutate, isLoading } = useApiMutation<
+    LoginRequestType,
+    LoginResponseType
+  >(API_ENDPOINTS.LOGIN_ENDPOINT, REQUEST_METHODS.POST);
 
   const onSubmit = (values: z.infer<typeof LoginFormSchema>) => {
     console.log(values);
-    mutate(values,{
-      onSuccess:(response) => {
+    mutate(values, {
+      onSuccess: response => {
         writeCredentials(response);
       }
-    })
+    });
   };
 
-  return <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex h-screen flex-col justify-between w-full lg:w-1/2 border bg-slate-300 dark:bg-slate-950 py-20">
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex h-screen flex-col justify-between w-full lg:w-1/2 border bg-slate-300 dark:bg-slate-950 py-20"
+      >
         <div className="flex flex-row w-full px-20 lg:px-[22%] justify-end">
-          <Button variant={"ghost"} className="cursor-pointer" onClick={() => navigate("/signin")}>
+          <Button
+            variant={"ghost"}
+            className="cursor-pointer"
+            onClick={() => navigate("/signin")}
+          >
             Sign in
           </Button>
         </div>
@@ -56,19 +64,39 @@ const FormComponent = () => {
             Enter your credentials
           </p>
 
-          <FormField name={"username"} control={form.control} render={({ field }) => <FormItem>
+          <FormField
+            name={"username"}
+            control={form.control}
+            render={({ field }) =>
+              <FormItem>
                 <FormControl>
-                  <Input placeholder="Username" type="name" className="bg-slate-900 py-5" {...field} />
+                  <Input
+                    placeholder="Username"
+                    type="name"
+                    className="bg-slate-900 py-5"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
-              </FormItem>} />
+              </FormItem>}
+          />
 
-          <FormField name={"password"} control={form.control} render={({ field }) => <FormItem>
+          <FormField
+            name={"password"}
+            control={form.control}
+            render={({ field }) =>
+              <FormItem>
                 <FormControl>
-                  <Input placeholder="Password" className="bg-slate-900 py-5" type="password"{...field} />
+                  <Input
+                    placeholder="Password"
+                    className="bg-slate-900 py-5"
+                    type="password"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
-              </FormItem>} />
+              </FormItem>}
+          />
 
           <div className="flex flex-row items-center w-full justify-between pl-2">
             <div className="flex flex-row gap-3">
@@ -79,8 +107,12 @@ const FormComponent = () => {
               Forgot Password
             </Button>
           </div>
-          <Button variant={"default"} disabled={isLoading} className="rounded-lg text-base cursor-pointer py-6 w-full">
-            {isLoading ? "Logging In...":"Login"}
+          <Button
+            variant={"default"}
+            disabled={isLoading}
+            className="rounded-lg text-base cursor-pointer py-6 w-full"
+          >
+            {isLoading ? "Logging In..." : "Login"}
           </Button>
           <div className="flex flex-row items-center px-2 w-full">
             <div className="hidden border-slate-400 md:inline w-1/3 border h-0" />
@@ -95,15 +127,22 @@ const FormComponent = () => {
         </div>
 
         <div className="flex flex-row w-full justify-center ">
-          <Button variant={"link"} className="text-base text-gray-400 cursor-pointer">
+          <Button
+            variant={"link"}
+            className="text-base text-gray-400 cursor-pointer"
+          >
             Privacy
           </Button>
-          <Button variant={"link"} className="text-base text-gray-400 cursor-pointer">
+          <Button
+            variant={"link"}
+            className="text-base text-gray-400 cursor-pointer"
+          >
             Terms and Conditions
           </Button>
         </div>
       </form>
-    </Form>;
+    </Form>
+  );
 };
 
 const Login = () => {
