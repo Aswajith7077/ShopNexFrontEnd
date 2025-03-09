@@ -52,3 +52,11 @@ export default tseslint.config({
   },
 })
 ```
+
+
+
+# Installation of PNPM
+
+```actionscript3
+npm install -g pnpm
+```
