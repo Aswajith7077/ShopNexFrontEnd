@@ -1,62 +1,42 @@
-# React + TypeScript + Vite
+# Shopnex Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shopnex Frontend is a modern, high-performance web application built with React and TypeScript. It leverages React Query for efficient data fetching and caching, ShadCN for elegant UI components, and PNPM as the package manager for optimized dependency management.
 
-Currently, two official plugins are available:
+## Features
+- **React & TypeScript**: Type-safe and component-driven development.
+- **React Query**: Optimized data fetching and caching.
+- **ShadCN**: Pre-styled, accessible UI components.
+- **PNPM**: Fast and efficient package management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prerequisites
+Ensure you have the following installed:
+- Node.js (v18+ recommended)
+- PNPM (installed globally via `npm install -g pnpm`)
 
-## Expanding the ESLint configuration
+## Installation
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-repo/shopnex-frontend.git
+   cd shopnex-frontend
+   ```
+2. **Install Dependencies**
+   ```bash
+   pnpm install
+   ```
+3. **Run the Application**
+   ```bash
+   pnpm dev
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Available Scripts
+- `pnpm dev` - Run development server
+- `pnpm build` - Build production-ready files
+- `pnpm preview` - Preview the built application
+- `pnpm lint` - Run linting checks
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Deployment
+The Application is deployed using Vercel platform.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Author
+Developed by [Aswajith S](https://github.com/Aswajith7077).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
-
-
-
-# Installation of PNPM
-
-```actionscript3
-npm install -g pnpm
-```
